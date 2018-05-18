@@ -158,6 +158,11 @@ set(SHARED_LIBRARY_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 # Compiler definitions for building the library
 add_definitions(-DFT2_BUILD_LIBRARY)
 
+if (UWP)
+  # Prevent MSVC from erroring out due to using insecure versions of string functions.
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+endif()
+
 # Find dependencies
 
 macro(add_package package use_hunter)
