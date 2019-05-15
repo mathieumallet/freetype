@@ -187,6 +187,11 @@ if (BUILD_FRAMEWORK)
 endif ()
 
 
+if (UWP)
+  # Prevent MSVC from erroring out due to using insecure versions of string functions.
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+endif()
+
 # Find dependencies
 if (FT_WITH_HARFBUZZ)
   find_package(HarfBuzz 1.3.0 REQUIRED)
