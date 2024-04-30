@@ -1,15 +1,19 @@
 @PACKAGE_INIT@
 
-if(@FT_WITH_PNG@)
+if(@FT_REQUIRE_PNG@)
   find_package(PNG CONFIG REQUIRED)
 endif()
 
-if(@FT_WITH_ZLIB@)
+if(@FT_REQUIRE_ZLIB@)
   find_package(ZLIB CONFIG REQUIRED)
 endif()
 
-if(@FT_WITH_BZIP2@)
+if(@FT_REQUIRE_BZIP2@)
   find_package(BZip2 CONFIG REQUIRED)
+endif()
+
+if(@FT_REQUIRE_BROTLI@)
+  find_package(BrotliDec CONFIG REQUIRED)
 endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/@TARGETS_EXPORT_NAME@.cmake")
