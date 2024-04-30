@@ -153,7 +153,16 @@
 
 
 #define ft_strtol  strtol
-#define ft_getenv  getenv
+
+#if defined(WINDOWS_UWP) || defined(__ORBIS__) || defined(__PROSPERO__)
+inline char *ft_getenv_stub(const char *)
+{
+  return nullptr;
+}
+#define ft_getenv ft_getenv_stub
+#else
+#define ft_getenv getenv
+#endif
 
 
   /**************************************************************************
